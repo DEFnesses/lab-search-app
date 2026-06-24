@@ -1,0 +1,30 @@
+@media (max-width: 1000px) {
+    .header-title {
+        max-width: 500px;
+        text-align: center;
+        margin-bottom: 20px;
+    }
+    .result {
+        min-width: 500px;
+    }
+    .result-table {
+        font-size: 12px;
+    }
+}
+
+@media (max-width: 600px) {
+      .header-title {
+        max-width: 400px;
+        font-size: 30px;
+    }
+    .search {
+      flex-direction: column;
+      gap:10px
+    }
+    .result {
+        min-width: 300px;
+    }
+    .result-table {
+        font-size: 10px;
+    }
+}

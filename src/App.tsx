@@ -1,0 +1,59 @@
+import React, { useState } from "react";
+import "./App.css";
+import "./styles/media.css";
+
+import Header from "./components/Header/Header";
+import Search from "./components/Search/Search";
+import Results from "./components/Results/Results";
+import { patients, type Patient } from "./data/mockData";
+
+function App() {
+    const [snils, setSnils] = useState("");
+    const [patient, setPatient] = useState<Patient | null>(null);
+    const [isLoading, setIsLoading] = useState(false);
+    const [error, setError] = useState("");
+
+    const handleSearch = () => {
+        const cleanInput = snils.trim().replace(/\D/g, "");
+
+        if (!cleanInput) {
+            setError("Введите СНИЛС");
+            setPatient(null);
+            return;
+        }
+
+        setError("");
+        setIsLoading(true);
+        setTimeout(() => {
+            const found = patients.find(
+                (p) => p.snils.replace(/\D/g, "") === cleanInput,
+            );
+
+            if (found) {
+                setPatient(found);
+                setError("");
+            } else {
+                setError("Пациент с таким СНИЛС не найден");
+                setPatient(null);
+            }
+            setIsLoading(false);
+        }, 1500);
+    };
+
+    return (
+        <>
+            <div className="container">
+                <Header />
+                <Search
+                    value={snils}
+                    onChange={setSnils}
+                    onSearch={handleSearch}
+                    loading={isLoading}
+                />
+                <Results patient={patient} error={error} loading={isLoading} />
+            </div>
+        </>
+    );
+}
+
+export default App;
