@@ -1,6 +1,5 @@
 import React, { useState } from "react";
-import "./App.css";
-import "./styles/media.css";
+import "./layout/App.scss";
 
 import Header from "./components/Header/Header";
 import Search from "./components/Search/Search";
@@ -14,6 +13,8 @@ function App() {
     const [error, setError] = useState("");
 
     const handleSearch = () => {
+        if (isLoading) return;
+
         const cleanInput = snils.trim().replace(/\D/g, "");
 
         if (!cleanInput) {
@@ -36,6 +37,7 @@ function App() {
                 setError("Пациент с таким СНИЛС не найден");
                 setPatient(null);
             }
+
             setIsLoading(false);
         }, 1500);
     };

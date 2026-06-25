@@ -1,0 +1,33 @@
+.search {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 600px;
+    height: 100px;
+    margin-bottom: 20px;
+    gap: 40px;
+
+    &__input {
+        width: 200px;
+        height: 30px;
+        padding: 10px;
+        border-radius: 25px;
+        border: 1px solid #4d86bc;
+    }
+
+    &__button {
+        width: 120px;
+        padding: 5px;
+        border: 1px solid #333;
+        border-radius: 25px;
+        font-size: 16px;
+        color: #fff;
+        background-color: #4d86bc;
+        cursor: pointer;
+    }
+
+    @media (max-width: 600px) {
+        flex-direction: column;
+        gap: 10px;
+    }
+}

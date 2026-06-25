@@ -1,6 +1,6 @@
-import React from "react";
-import "./Search.css"
+import { formatSnils, cleanSnils } from "../../utils/formatSnils";
 
+import s from "./Search.module.scss"
 
 interface SearchProps {
     value: string;
@@ -10,23 +10,30 @@ interface SearchProps {
 }
 
 function Search({ value, loading, onChange, onSearch }: SearchProps) {
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const input = e.target.value;
+        const digits = cleanSnils(input); 
+        onChange(digits); 
+    };
     return (
-        <section className="search">
+        <section className={s.search}>
             <input
-                className="search-input"
-                type="text"
+                className={s.search__input}
+                type={"text"}
                 placeholder="Введите СНИЛС"
-                value={value}
-                onChange={(e) => onChange(e.target.value)}
+                value={formatSnils(value)}
+                onChange={handleChange}
                 onKeyDown={(e) => {
                     if (e.key === "Enter") {
-                        onSearch()
+                        onSearch();
                     }
                 }}
             />
-            <button className="search-btn" 
-            disabled={loading}
-            onClick={onSearch}>
+            <button
+                className={s.search__button}
+                disabled={loading}
+                onClick={onSearch}
+            >
                 {loading ? "Идёт поиск" : "Поиск"}
             </button>
         </section>

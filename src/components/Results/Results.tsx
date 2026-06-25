@@ -1,7 +1,6 @@
-import React from "react";
-import "./Results.css";
-
 import type { Patient } from "../../data/mockData";
+
+import s from "./Results.module.scss"
 
 interface ResultsProps {
     patient: Patient | null;
@@ -9,56 +8,50 @@ interface ResultsProps {
     loading: boolean;
 }
 
-function Results({ patient, error, loading }: ResultsProps) {
-    if (error) {
-        return (
-            <section className="result">
-                <p className="error-message">{error}</p>
-            </section>
-        );
-    }
+function ResultsContent({ patient, error, loading }: ResultsProps) {
+    if (error) return <p className={s.result__error}>{error}</p>;
 
-    if (!patient) {
-        return (
-            <section className="result">
-                {loading ? "Загрузка..." : "Введите СНИЛС и нажмите «Поиск»"}
-            </section>
-        );
-    }
+    if (loading) return <p>"Загрузка..."</p>;
 
-    if (!patient.analyses || patient.analyses.length === 0) {
-        return (
-            <section className="result">
-                <h3 className="result-title">Результаты</h3>
-                <p className="result-patient">Пациент: {patient.name}</p>
-                <p>У пациента нет лабораторных исследований</p>
-            </section>
-        );
-    }
+    if (!patient) return <p>"Введите СНИЛС и нажмите «Поиск»"</p>;
 
     return (
-        <section className="result">
-            <h3 className="result-title">Результаты</h3>
-            <p className="result-patient">Пациент: {patient.name}</p>
-            <p>Найдено: {patient.analyses.length} анализов</p>
-            <table className="result-table">
-                <thead>
-                    <tr>
-                        <th>Показатель</th>
-                        <th>Результат</th>
-                        <th>Норма</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {patient.analyses.map((item, index) => (
-                        <tr key={index}>
-                            <td>{item.name}</td>
-                            <td>{item.result}</td>
-                            <td>{item.norm}</td>
-                        </tr>
-                    ))}
-                </tbody>
-            </table>
+        <>
+            <h3 className={s.result__title}>Результаты</h3>
+            <p className={s.result__patient}>Пациент: {patient.name}</p>
+            {!patient.analyses || patient.analyses.length === 0 ? (
+                <p>У пациента нет лабораторных исследований</p>
+            ) : (
+                <>
+                    <p>Найдено: {patient.analyses.length} анализов</p>
+                    <table className={s.result__table}>
+                        <thead>
+                            <tr>
+                                <th>Показатель</th>
+                                <th>Результат</th>
+                                <th>Норма</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {patient.analyses.map((item, index) => (
+                                <tr key={index}>
+                                    <td>{item.name}</td>
+                                    <td>{item.result}</td>
+                                    <td>{item.norm}</td>
+                                </tr>
+                            ))}
+                        </tbody>
+                    </table>
+                </>
+            )}
+        </>
+    );
+}
+
+function Results(props: ResultsProps) {
+    return (
+        <section className={s.result}>
+            <ResultsContent {...props} />
         </section>
     );
 }

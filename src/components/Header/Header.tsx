@@ -1,10 +1,9 @@
-import React from "react";
-import "./Header.css"
+import s from "./Header.module.scss"
 
 function Header() {
     return (
-        <div className="header">
-            <h1 className="header-title">
+        <div className={s.header}>
+            <h1 className={s.header__title}>
                 Реестр поиска лабораторных исследований
             </h1>
         </div>

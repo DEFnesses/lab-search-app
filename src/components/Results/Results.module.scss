@@ -1,0 +1,60 @@
+.result {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 800px;
+    gap: 30px;
+
+    &__title {
+        font-size: 20px;
+    }
+
+    &__patient {
+        font-size: 18px;
+    }
+
+    &__table {
+        width: 100%;
+        height: auto;
+        border-collapse: collapse;
+        border-spacing: 0;
+
+        td,
+        th {
+            padding: 3px;
+            height: 35px;
+            border: 1px solid #595959;
+        }
+
+        th {
+            font-weight: normal;
+            color: #fff;
+            background: #4d86bc;
+        }
+    }
+
+    &__message {
+        padding: 12px 20px;
+        font-size: 16px;
+        border: 1px solid #f44336;
+        border-radius: 8px;
+        color: #d32f2f;
+        background-color: #ffebee;
+    }
+
+    @media (max-width: 1000px) {
+        min-width: 500px;
+
+        &__table {
+            font-size: 12px;
+        }
+    }
+
+    @media (max-width: 600px) {
+        min-width: 300px;
+
+        &__table {
+            font-size: 10px;
+        }
+    }
+}
