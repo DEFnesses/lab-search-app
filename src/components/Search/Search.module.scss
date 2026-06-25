@@ -25,8 +25,10 @@
         background-color: #4d86bc;
         cursor: pointer;
     }
+}
 
-    @media (max-width: 600px) {
+@media (max-width: 600px) {
+    .search {
         flex-direction: column;
         gap: 10px;
     }

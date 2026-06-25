@@ -1,10 +1,10 @@
-import  { useState } from "react";
-import "./layout/App.scss";
+import { useState } from "react";
+import s from "./App.module.scss";
 
-import Header from "./components/Header/Header";
-import Search from "./components/Search/Search";
-import Results from "./components/Results/Results";
-import { patients, type Patient } from "./data/mockData";
+import Header from "../components/Header/Header";
+import Search from "../components/Search/Search";
+import Results from "../components/Results/Results";
+import { patients, type Patient } from "../data/mockData";
 
 function App() {
     const [snils, setSnils] = useState("");
@@ -44,7 +44,7 @@ function App() {
 
     return (
         <>
-            <div className="container">
+            <div className={s.container}>
                 <Header />
                 <Search
                     value={snils}

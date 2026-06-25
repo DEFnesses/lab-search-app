@@ -1,21 +1,18 @@
-.header {
-    &__title {
-        margin: 60px 0;
-        font-size: 34px;
+.header__title {
+    margin: 60px 0;
+    font-size: 34px;
+}
+@media (max-width: 1000px) {
+    .header__title {
+        max-width: 500px;
+        text-align: center;
+        margin-bottom: 20px;
     }
+}
 
-    @media (max-width: 1000px) {
-        &__title {
-            max-width: 500px;
-            text-align: center;
-            margin-bottom: 20px;
-        }
-    }
-
-    @media (max-width: 600px) {
-        &__title {
-            max-width: 400px;
-            font-size: 30px;
-        }
+@media (max-width: 600px) {
+    .header__title {
+        max-width: 400px;
+        font-size: 30px;
     }
 }

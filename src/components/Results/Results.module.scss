@@ -41,16 +41,20 @@
         color: #d32f2f;
         background-color: #ffebee;
     }
+}
 
-    @media (max-width: 1000px) {
+@media (max-width: 1000px) {
+    .result {
         min-width: 500px;
 
         &__table {
             font-size: 12px;
         }
     }
+}
 
-    @media (max-width: 600px) {
+@media (max-width: 600px) {
+    .result {
         min-width: 300px;
 
         &__table {

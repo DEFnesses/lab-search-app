@@ -1,6 +1,6 @@
 import type { Patient } from "../../data/mockData";
 
-import s from "./Results.module.scss"
+import s from "./Results.module.scss";
 
 interface ResultsProps {
     patient: Patient | null;
@@ -11,9 +11,9 @@ interface ResultsProps {
 function ResultsContent({ patient, error, loading }: ResultsProps) {
     if (error) return <p className={s.result__error}>{error}</p>;
 
-    if (loading) return <p>"Загрузка..."</p>;
+    if (loading) return <p>Загрузка...</p>;
 
-    if (!patient) return <p>"Введите СНИЛС и нажмите «Поиск»"</p>;
+    if (!patient) return <p>Введите СНИЛС и нажмите «Поиск»</p>;
 
     return (
         <>
